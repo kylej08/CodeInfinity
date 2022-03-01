@@ -17,26 +17,29 @@ namespace Test1
             InitializeComponent();
         }
 
-        #region Events
-
-        private void idNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // only accept digits, and backspace
-            if (! char.IsDigit(e.KeyChar) && ! e.KeyChar.Equals('\b'))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void idNumberTextBox_TextChanged(object sender, EventArgs e)
+        private void ModifyIdNumberErrorLabelState(string message = "")
         {
             var id = idNumberTextBox.Text;
 
             if (IDHelper.IsValidId(id))
             {
                 idNumberErrorLabel.Visible = false;
+            }
+            else
+            {
+                idNumberErrorLabel.Visible = true;
+                idNumberErrorLabel.Text = message;
+            }
+        }
 
-                if (IDHelper.IsDOBComparisonEqual(id, dateOfBirthDateTimePicker.Value))
+        private void ModifyDateOfBirthErrorLabelState()
+        {
+            var id = idNumberTextBox.Text;
+            var dateOfBirth = dateOfBirthDateTimePicker.Value.Date;
+
+            if (IDHelper.IsValidId(id))
+            {
+                if (IDHelper.IsDOBComparisonEqual(id, dateOfBirth))
                 {
                     dateOfBirthErrorLabel.Visible = false;
                 }
@@ -48,8 +51,20 @@ namespace Test1
             }
             else
             {
-                idNumberErrorLabel.Visible = true;
-                idNumberErrorLabel.Text = "The ID number is invalid.";
+                dateOfBirthErrorLabel.Visible = false;
+            }
+        }
+
+
+
+        #region Events
+
+        private void idNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // only accept digits, and backspace
+            if (! char.IsDigit(e.KeyChar) && ! e.KeyChar.Equals('\b'))
+            {
+                e.Handled = true;
             }
         }
 
@@ -71,23 +86,10 @@ namespace Test1
             }
         }
 
-        private void postButton_Click(object sender, EventArgs e)
+        private void idNumberTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(idNumberTextBox.Text))
-            {
-                idNumberErrorLabel.Text = "ID number is required";
-                idNumberErrorLabel.Visible = true;
-            }
-            if (string.IsNullOrWhiteSpace(nameTextBox.Text))
-            {
-                nameErrorLabel.Text = "Name is required";
-                nameErrorLabel.Visible = true;
-            }
-            if (string.IsNullOrWhiteSpace(surnameTextBox.Text))
-            {
-                surnameErrorLabel.Text = "Surname is required";
-                surnameErrorLabel.Visible = true;
-            }
+            ModifyDateOfBirthErrorLabelState();
+            ModifyIdNumberErrorLabelState("The ID number is invalid.");
         }
 
         private void nameTextBox_TextChanged(object sender, EventArgs e)
@@ -108,62 +110,34 @@ namespace Test1
 
         private void dateOfBirthDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            var date = dateOfBirthDateTimePicker.Value.Date;
+            //var date = dateOfBirthDateTimePicker.Value.Date;
             var id = idNumberTextBox.Text;
 
             if (IDHelper.IsValidId(id))
             {
-                if (IDHelper.IsDOBComparisonEqual(id, date))
-                {
-                    dateOfBirthErrorLabel.Visible = false;
-                    //idNumberErrorLabel.Visible = false;
-                }
-                else
-                {
-                    dateOfBirthErrorLabel.Text = "Date of Birth conflicts with the ID";
-                    dateOfBirthErrorLabel.Visible = true;
+                ModifyDateOfBirthErrorLabelState();
+            }
+        }
 
-                    //idNumberErrorLabel.Text = "ID conflicts with Date of Birth";
-                    //idNumberErrorLabel.Visible = true;
-                }
+        private void postButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(idNumberTextBox.Text))
+            {
+                ModifyIdNumberErrorLabelState("ID number is required");
+            }
+            if (string.IsNullOrWhiteSpace(nameTextBox.Text))
+            {
+                nameErrorLabel.Text = "Name is required";
+                nameErrorLabel.Visible = true;
+            }
+            if (string.IsNullOrWhiteSpace(surnameTextBox.Text))
+            {
+                surnameErrorLabel.Text = "Surname is required";
+                surnameErrorLabel.Visible = true;
             }
         }
 
         #endregion
-
-
-       
-    }
-
-    public static class IDHelper
-    {
-        public static bool IsValidId(string id)
-        {
-            return id.Length == 13 && (id[10] == '0' || id[10] == '1');
-        }
-
-
-        public static bool IsDOBComparisonEqual(string id, DateTime date)
-        {
-            return date.Year == GetYearForId(id)
-                    && date.Month == GetMonthForId(id)
-                    && date.Day == GetDayForId(id);
-        }
-
-        private static int GetYearForId(string id)
-        {
-            return int.Parse("19" + id.Substring(0, 2));
-        }
-
-        private static int GetMonthForId(string id)
-        {
-            return int.Parse(id.Substring(2, 2));
-        }
-
-        private static int GetDayForId(string id)
-        {
-            return int.Parse(id.Substring(4, 2));
-        }
 
     }
 }
