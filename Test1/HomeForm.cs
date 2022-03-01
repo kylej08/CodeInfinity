@@ -32,9 +32,19 @@ namespace Test1
         {
             var id = idNumberTextBox.Text;
 
-            if (id.Length == 13 && (id[10] == '0' || id[10] == '1'))
+            if (IDHelper.IsValidId(id))
             {
                 idNumberErrorLabel.Visible = false;
+
+                if (IDHelper.IsDOBComparisonEqual(id, dateOfBirthDateTimePicker.Value))
+                {
+                    dateOfBirthErrorLabel.Visible = false;
+                }
+                else
+                {
+                    dateOfBirthErrorLabel.Text = "Date of Birth conflicts with the ID";
+                    dateOfBirthErrorLabel.Visible = true;
+                }
             }
             else
             {
@@ -99,51 +109,61 @@ namespace Test1
         private void dateOfBirthDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             var date = dateOfBirthDateTimePicker.Value.Date;
+            var id = idNumberTextBox.Text;
 
-            //if id number is valid
-            if (idNumberTextBox.TextLength == 13)
+            if (IDHelper.IsValidId(id))
             {
-                var id = idNumberTextBox.Text;
-                if (! (date.Year == GetYearForId(id) && date.Month == GetMonthForId(id) && date.Day == GetDayForId(id)))
+                if (IDHelper.IsDOBComparisonEqual(id, date))
+                {
+                    dateOfBirthErrorLabel.Visible = false;
+                    //idNumberErrorLabel.Visible = false;
+                }
+                else
                 {
                     dateOfBirthErrorLabel.Text = "Date of Birth conflicts with the ID";
                     dateOfBirthErrorLabel.Visible = true;
 
-                    idNumberErrorLabel.Text = "ID conflicts with Date of Birth";
-                    idNumberErrorLabel.Visible = true;
-                }
-                else
-                {
-                    dateOfBirthErrorLabel.Visible = false;
-                    idNumberErrorLabel.Visible = false;
+                    //idNumberErrorLabel.Text = "ID conflicts with Date of Birth";
+                    //idNumberErrorLabel.Visible = true;
                 }
             }
         }
 
         #endregion
 
-        private int GetYearForId(string id)
+
+       
+    }
+
+    public static class IDHelper
+    {
+        public static bool IsValidId(string id)
+        {
+            return id.Length == 13 && (id[10] == '0' || id[10] == '1');
+        }
+
+
+        public static bool IsDOBComparisonEqual(string id, DateTime date)
+        {
+            return date.Year == GetYearForId(id)
+                    && date.Month == GetMonthForId(id)
+                    && date.Day == GetDayForId(id);
+        }
+
+        private static int GetYearForId(string id)
         {
             return int.Parse("19" + id.Substring(0, 2));
         }
 
-        private int GetMonthForId(string id)
+        private static int GetMonthForId(string id)
         {
             return int.Parse(id.Substring(2, 2));
         }
 
-        private int GetDayForId(string id)
+        private static int GetDayForId(string id)
         {
             return int.Parse(id.Substring(4, 2));
         }
-       
-    }
 
-    public static class IDValidator
-    {
-        //public static bool IsValid(string idNumber)
-        //{
- 
-        //}
     }
 }
