@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +12,54 @@ using System.Windows.Forms;
 
 namespace Test1
 {
+    public class UserRepository
+    {
+        private IMongoDatabase _db;
+
+        private readonly string _connectionString = "mongodb://localhost:27017";
+        private readonly string _dbName = "CodeInfinity";
+
+        public UserRepository()
+        {
+            var client = new MongoClient(_connectionString);
+            _db = client.GetDatabase(_dbName);
+        }
+
+
+        //collection _db.GetCollection<User>("")
+        // 
+        
+        public void Save(User user)
+        {
+            var collection = _db.GetCollection<User>("Users");
+            var document = collection.Find(new BsonDocument()).FirstOrDefault();
+
+            if (document == null)
+            {
+                collection.InsertOne(user);
+            }
+            else
+            {
+                var filter = Builders<User>.Filter.Eq(nameof(user.Id), user.Id);
+                collection.ReplaceOne(filter, user, new ReplaceOptions { IsUpsert = true});
+            }
+        }
+
+        public void Get()
+        {
+
+        }
+    }
+
     public partial class HomeForm : Form
     {
+        private UserRepository _userRepository;
+
         public HomeForm()
         {
             InitializeComponent();
+
+            _userRepository = new UserRepository();
         }
 
         private void ModifyIdNumberErrorLabelState(string message = "")
@@ -124,17 +169,30 @@ namespace Test1
             if (string.IsNullOrWhiteSpace(idNumberTextBox.Text))
             {
                 ModifyIdNumberErrorLabelState("ID number is required");
+                return;
             }
             if (string.IsNullOrWhiteSpace(nameTextBox.Text))
             {
                 nameErrorLabel.Text = "Name is required";
                 nameErrorLabel.Visible = true;
+                return;
             }
             if (string.IsNullOrWhiteSpace(surnameTextBox.Text))
             {
                 surnameErrorLabel.Text = "Surname is required";
                 surnameErrorLabel.Visible = true;
+                return;
             }
+
+            var user = new User()
+            {
+                IDNumber = idNumberTextBox.Text,
+                Name = nameTextBox.Text,
+                Surname = surnameTextBox.Text,
+                DateOfBirth = dateOfBirthDateTimePicker.Value.ToShortDateString()
+            };
+
+            _userRepository.Save(user);
         }
 
         #endregion

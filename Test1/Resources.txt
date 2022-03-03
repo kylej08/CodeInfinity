@@ -1,2 +1,7 @@
 ﻿SA ID Number Format: https://www.westerncape.gov.za/general-publication/decoding-your-south-african-id-number-0
 Oldest person alive: https://en.as.com/en/2022/01/18/latest_news/1642544657_524428.html
+
+Mongodb:
+	- https://www.youtube.com/watch?v=69WBy4MHYUw
+	- https://mongodb.github.io/mongo-csharp-driver/2.14/getting_started/installation/
+	- https://mongodb.github.io/mongo-csharp-driver/2.14/getting_started/quick_tour/
