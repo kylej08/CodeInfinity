@@ -23,7 +23,7 @@ namespace Test1
         [BsonRequired]
         public string Surname { get; set; }
 
-        [BsonDateTimeOptions(DateOnly = true, Kind = DateTimeKind.Utc)]
+        //[BsonDateTimeOptions(DateOnly = true, Kind = DateTimeKind.Utc, Representation = MongoDB.Bson.BsonType.DateTime)]
         public string DateOfBirth { get; set; }
 
     }

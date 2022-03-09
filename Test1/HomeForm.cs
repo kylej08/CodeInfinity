@@ -1,56 +1,14 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Test1
 {
-    public class UserRepository
-    {
-        private IMongoDatabase _db;
-
-        private readonly string _connectionString = "mongodb://localhost:27017";
-        private readonly string _dbName = "CodeInfinity";
-
-        public UserRepository()
-        {
-            var client = new MongoClient(_connectionString);
-            _db = client.GetDatabase(_dbName);
-        }
-
-
-        //collection _db.GetCollection<User>("")
-        // 
-        
-        public void Save(User user)
-        {
-            var collection = _db.GetCollection<User>("Users");
-            var document = collection.Find(new BsonDocument()).FirstOrDefault();
-
-            if (document == null)
-            {
-                collection.InsertOne(user);
-            }
-            else
-            {
-                var filter = Builders<User>.Filter.Eq(nameof(user.Id), user.Id);
-                collection.ReplaceOne(filter, user, new ReplaceOptions { IsUpsert = true});
-            }
-        }
-
-        public void Get()
-        {
-
-        }
-    }
-
     public partial class HomeForm : Form
     {
         private UserRepository _userRepository;
@@ -166,6 +124,7 @@ namespace Test1
 
         private void postButton_Click(object sender, EventArgs e)
         {
+
             if (string.IsNullOrWhiteSpace(idNumberTextBox.Text))
             {
                 ModifyIdNumberErrorLabelState("ID number is required");
@@ -184,15 +143,44 @@ namespace Test1
                 return;
             }
 
+            if (idNumberErrorLabel.Visible || nameErrorLabel.Visible || surnameErrorLabel.Visible || dateOfBirthErrorLabel.Visible)
+            {
+                return;
+            }
+
             var user = new User()
             {
                 IDNumber = idNumberTextBox.Text,
                 Name = nameTextBox.Text,
                 Surname = surnameTextBox.Text,
-                DateOfBirth = dateOfBirthDateTimePicker.Value.ToShortDateString()
+                DateOfBirth = dateOfBirthDateTimePicker.Value.ToString("dd/MM/yyyy")
             };
 
+            if (_userRepository.IdNumberExists(user.IDNumber))
+            {
+                idNumberErrorLabel.Text = "The ID Number already exists.";
+                idNumberErrorLabel.Visible = true;
+
+                return;
+            }
+
+            idNumberErrorLabel.Visible = false;
             _userRepository.Save(user);
+
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            idNumberTextBox.Text = String.Empty;
+            nameTextBox.Text = String.Empty;
+            surnameTextBox.Text = String.Empty;
+            dateOfBirthDateTimePicker.Value = dateOfBirthDateTimePicker.MinDate;
+
+            idNumberErrorLabel.Visible = false;
+            nameErrorLabel.Visible = false;
+            surnameErrorLabel.Visible = false;
+            dateOfBirthErrorLabel.Visible = false;
+
         }
 
         #endregion

@@ -73,7 +73,7 @@
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
             this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(200, 23);
             this.dateOfBirthDateTimePicker.TabIndex = 2;
-            this.dateOfBirthDateTimePicker.Value = new System.DateTime(2006, 4, 1, 0, 0, 0, 0);
+            this.dateOfBirthDateTimePicker.Value = new System.DateTime(1902, 1, 1, 0, 0, 0, 0);
             this.dateOfBirthDateTimePicker.ValueChanged += new System.EventHandler(this.dateOfBirthDateTimePicker_ValueChanged);
             // 
             // postButton
@@ -139,6 +139,7 @@
             this.cancelButton.TabIndex = 9;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // idNumberErrorLabel
             // 

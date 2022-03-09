@@ -1,0 +1,10 @@
+﻿1. Surnames: https://thestoryshack.com/tools/last-name-generator/
+2. EPPlus:
+	a. https://www.youtube.com/watch?v=j3S3aI8nMeE&t=1892s
+	b. https://www.epplussoftware.com/en/Developers/
+
+3. https://www.howtogeek.com/348960/what-is-a-csv-file-and-how-do-i-open-it/
+
+4. SQLite:
+	a. https://www.youtube.com/watch?v=ayp3tHEkRc0&t=1554s
+	b. https://www.sqlite.org/lang_createtable.html

@@ -1,0 +1,1 @@
+﻿1. Mongodb to be created in the cloud (docker container?)
