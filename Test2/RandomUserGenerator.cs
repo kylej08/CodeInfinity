@@ -13,6 +13,8 @@ namespace Test2
         private string[] _names;
         private string[] _surnames;
 
+        public event EventHandler UserGenerated;
+
         public RandomUserGenerator()
         {
             _names = PopulateNames();
@@ -46,6 +48,7 @@ namespace Test2
                         break;
                     }
                 }
+                //UserGenerated.Invoke(this, new EventArgs());
             }
 
             return users;

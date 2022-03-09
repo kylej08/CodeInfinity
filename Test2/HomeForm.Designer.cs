@@ -32,6 +32,7 @@
             this.importCSVFileButton = new System.Windows.Forms.Button();
             this.numberOfRecordsTextBox = new System.Windows.Forms.TextBox();
             this.numberOfRecordsLabel = new System.Windows.Forms.Label();
+            this.generateCSVProgressLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // generateCSVFileButton
@@ -74,11 +75,22 @@
             this.numberOfRecordsLabel.TabIndex = 3;
             this.numberOfRecordsLabel.Text = "Number of Records:";
             // 
+            // generateCSVProgressLabel
+            // 
+            this.generateCSVProgressLabel.AutoSize = true;
+            this.generateCSVProgressLabel.Location = new System.Drawing.Point(139, 132);
+            this.generateCSVProgressLabel.Name = "generateCSVProgressLabel";
+            this.generateCSVProgressLabel.Size = new System.Drawing.Size(165, 15);
+            this.generateCSVProgressLabel.TabIndex = 4;
+            this.generateCSVProgressLabel.Text = "<Generating-Users-Message>";
+            this.generateCSVProgressLabel.Visible = false;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 325);
+            this.Controls.Add(this.generateCSVProgressLabel);
             this.Controls.Add(this.numberOfRecordsLabel);
             this.Controls.Add(this.numberOfRecordsTextBox);
             this.Controls.Add(this.importCSVFileButton);
@@ -99,5 +111,6 @@
         private System.Windows.Forms.Button importCSVFileButton;
         private System.Windows.Forms.TextBox numberOfRecordsTextBox;
         private System.Windows.Forms.Label numberOfRecordsLabel;
+        private System.Windows.Forms.Label generateCSVProgressLabel;
     }
 }

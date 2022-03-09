@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,15 @@ namespace Test2
 
         private readonly RandomUserGenerator _randomUserGenerator;
 
+        public event EventHandler UserGenerated;
+
         public string FilePath { get; set; }
 
         public CSVHelper()
         {
             _randomUserGenerator = new RandomUserGenerator();
-            //_filePath = filePath;
+
+            //_randomUserGenerator.UserGenerated += OnUserGeneratedEvent;
         }
 
         public void CreateCSVAsync(int variations)
@@ -73,6 +77,11 @@ namespace Test2
                 Age = int.Parse(record[4]),
                 DateOfBirth = new DateTime(dateOfBirthYear, dateOfBirthMonth, dateOfBirthDay)
             };
+        }
+
+        private void OnUserGeneratedEvent(object sender, EventArgs e)
+        {
+            UserGenerated.Invoke(sender, e); 
         }
 
     }

@@ -18,7 +18,8 @@ namespace Test2
         private CSVHelper _csvHelper;
         private DataService _dataService;
 
-        
+        private int TotalUsersGenerated { get; set; }
+
         public HomeForm()
         {
             InitializeComponent();
@@ -28,6 +29,8 @@ namespace Test2
             _csvHelper = new CSVHelper();
             _dataService = new DataService();
 
+            TotalUsersGenerated = 0;
+            //_csvHelper.UserGenerated += OnUserGenerated;
         }
 
         private void generateCSVFileButton_Click(object sender, EventArgs e)
@@ -51,21 +54,36 @@ namespace Test2
                 }
             }
 
+            generateCSVFileButton.Enabled = false;
+            numberOfRecordsTextBox.Enabled = false;
+            importCSVFileButton.Enabled = false;
+            generateCSVProgressLabel.Visible = true;
+
+            var variations = int.Parse(numberOfRecordsTextBox.Text);
+            Task.Run(() => GenerateCSVFile(variations));
+
+        }
+
+        private void GenerateCSVFile(int variations)
+        {
             try
             {
-                var variations = int.Parse(numberOfRecordsTextBox.Text);
                 _csvHelper.CreateCSVAsync(variations);
+                MessageBox.Show($"CSV File successfully created ({_csvHelper.FilePath})", "CSV Creation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
             }
 
-            MessageBox.Show($"CSV File successfully created ({_csvHelper.FilePath})", "CSV Creation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            generateCSVFileButton.Enabled = false;
-            numberOfRecordsTextBox.Clear();
+            this.Invoke(new Action(() =>
+            {
+                numberOfRecordsTextBox.Enabled = true;
+                importCSVFileButton.Enabled = true;
+                numberOfRecordsTextBox.Clear();
+            }));
         }
+
 
         private void numberOfRecordsTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -79,6 +97,15 @@ namespace Test2
         private void numberOfRecordsTextBox_TextChanged(object sender, EventArgs e)
         {
             generateCSVFileButton.Enabled = numberOfRecordsTextBox.Text.Length > 0;
+        }
+
+        private void OnUserGenerated(object sender, EventArgs e)
+        {
+            TotalUsersGenerated += 1;
+            this.Invoke(new Action(() =>
+            {
+                generateCSVProgressLabel.Text = $"Generating CSV File... ({TotalUsersGenerated} of {numberOfRecordsTextBox.Text})";
+            }));
         }
 
         private void importCSVFileButton_Click(object sender, EventArgs e)
