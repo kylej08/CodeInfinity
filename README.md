@@ -14,7 +14,7 @@ The .NET 5.0 SDK can be found here: https://dotnet.microsoft.com/en-us/download/
 Test2 utilises a SQLite database. If you would like to have a graphical view of the data, you can use an application like DB Browser (https://sqlitebrowser.org/dl/).
 
 ## License Notice
-1. The application uses dapper (https://dapper-tutorial.net/), released under Apache2 license, which can be found in the NOTICE file.
+1. The application uses dapper (https://dapper-tutorial.net/), released under Apache2 license, which can be found in the Test2/NOTICE file.
 
 
 
