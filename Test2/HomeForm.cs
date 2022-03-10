@@ -25,6 +25,8 @@ namespace Test2
         {
             InitializeComponent();
 
+            generateCSVFileButton.Enabled = false;
+
             //_csvHelper = new CSVHelper(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
             //_csvFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\output.csv";
             _csvHelper = new CSVHelper();

@@ -38,8 +38,9 @@
             // 
             // generateCSVFileButton
             // 
-            this.generateCSVFileButton.Enabled = false;
-            this.generateCSVFileButton.Location = new System.Drawing.Point(139, 106);
+            this.generateCSVFileButton.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.generateCSVFileButton.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.generateCSVFileButton.Location = new System.Drawing.Point(147, 106);
             this.generateCSVFileButton.Name = "generateCSVFileButton";
             this.generateCSVFileButton.Size = new System.Drawing.Size(227, 23);
             this.generateCSVFileButton.TabIndex = 0;
@@ -49,7 +50,9 @@
             // 
             // importCSVFileButton
             // 
-            this.importCSVFileButton.Location = new System.Drawing.Point(139, 167);
+            this.importCSVFileButton.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.importCSVFileButton.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.importCSVFileButton.Location = new System.Drawing.Point(147, 167);
             this.importCSVFileButton.Name = "importCSVFileButton";
             this.importCSVFileButton.Size = new System.Drawing.Size(235, 23);
             this.importCSVFileButton.TabIndex = 1;
@@ -59,7 +62,7 @@
             // 
             // numberOfRecordsTextBox
             // 
-            this.numberOfRecordsTextBox.Location = new System.Drawing.Point(258, 77);
+            this.numberOfRecordsTextBox.Location = new System.Drawing.Point(273, 77);
             this.numberOfRecordsTextBox.MaxLength = 7;
             this.numberOfRecordsTextBox.Name = "numberOfRecordsTextBox";
             this.numberOfRecordsTextBox.Size = new System.Drawing.Size(108, 23);
@@ -70,18 +73,21 @@
             // numberOfRecordsLabel
             // 
             this.numberOfRecordsLabel.AutoSize = true;
+            this.numberOfRecordsLabel.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numberOfRecordsLabel.Location = new System.Drawing.Point(139, 80);
             this.numberOfRecordsLabel.Name = "numberOfRecordsLabel";
-            this.numberOfRecordsLabel.Size = new System.Drawing.Size(113, 15);
+            this.numberOfRecordsLabel.Size = new System.Drawing.Size(128, 16);
             this.numberOfRecordsLabel.TabIndex = 3;
             this.numberOfRecordsLabel.Text = "Number of Records:";
             // 
             // generateCSVProgressLabel
             // 
             this.generateCSVProgressLabel.AutoSize = true;
-            this.generateCSVProgressLabel.Location = new System.Drawing.Point(139, 132);
+            this.generateCSVProgressLabel.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.generateCSVProgressLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.generateCSVProgressLabel.Location = new System.Drawing.Point(147, 132);
             this.generateCSVProgressLabel.Name = "generateCSVProgressLabel";
-            this.generateCSVProgressLabel.Size = new System.Drawing.Size(197, 15);
+            this.generateCSVProgressLabel.Size = new System.Drawing.Size(220, 16);
             this.generateCSVProgressLabel.TabIndex = 4;
             this.generateCSVProgressLabel.Text = "<CSV-Generate-Progress-Message>";
             this.generateCSVProgressLabel.Visible = false;
@@ -89,9 +95,11 @@
             // importCSVProgressLabel
             // 
             this.importCSVProgressLabel.AutoSize = true;
-            this.importCSVProgressLabel.Location = new System.Drawing.Point(139, 193);
+            this.importCSVProgressLabel.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.importCSVProgressLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.importCSVProgressLabel.Location = new System.Drawing.Point(147, 193);
             this.importCSVProgressLabel.Name = "importCSVProgressLabel";
-            this.importCSVProgressLabel.Size = new System.Drawing.Size(186, 15);
+            this.importCSVProgressLabel.Size = new System.Drawing.Size(207, 16);
             this.importCSVProgressLabel.TabIndex = 5;
             this.importCSVProgressLabel.Text = "<CSV-Import-Progress-Message>";
             this.importCSVProgressLabel.Visible = false;
@@ -100,6 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(525, 325);
             this.Controls.Add(this.importCSVProgressLabel);
             this.Controls.Add(this.generateCSVProgressLabel);
@@ -111,7 +120,7 @@
             this.MaximizeBox = false;
             this.Name = "HomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HomeForm";
+            this.Text = "Test 2";
             this.ResumeLayout(false);
             this.PerformLayout();
 
