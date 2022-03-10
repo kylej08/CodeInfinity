@@ -16,6 +16,16 @@ Test2 utilises a SQLite database. If you would like to have a graphical view of 
 ## License Notice
 1. The application uses dapper (https://dapper-tutorial.net/), released under Apache2 license, which can be found in the Test2/NOTICE file.
 
+## Time spent
+
+Below is the time spent on this project (the total off by maybe around 15m-25m).
+
+Test 1: 7h 46m
+Test 2: 10h 25m
+
+Total = 18h 11m + Github-related time spent (20m) = 18h 31m
+
+Prior to starting the application as a desktop application, I have spent time (7h 13m) on attempting a web-based version, where some of that time spent was useful in the desktop application (such as learning about mongo). To also count that time, the total might come around to 20h-21h.
 
 
 
