@@ -9,7 +9,7 @@ namespace Test1
         private IMongoDatabase _db;
 
         //private readonly string _connectionString = "mongodb://localhost:27017";
-        private readonly string _connectionString = "mongodb://20.87.64.118:27017";
+        private readonly string _connectionString = "mongodb://kylemongo874591.southafricanorth.azurecontainer.io";
         private readonly string _dbName = "CodeInfinity";
 
         public UserRepository()
@@ -25,7 +25,8 @@ namespace Test1
         public void Save(User user)
         {
             var collection = _db.GetCollection<User>("Users");
-            var document = collection.Find(new BsonDocument()).FirstOrDefault();
+            var filter = Builders<User>.Filter.Eq(nameof(user.IDNumber), user.IDNumber);
+            var document = collection.Find(filter).FirstOrDefault();
 
             if (document == null)
             {
@@ -33,7 +34,7 @@ namespace Test1
             }
             else
             {
-                var filter = Builders<User>.Filter.Eq(nameof(user.Id), user.Id);
+                filter = Builders<User>.Filter.Eq(nameof(user.Id), user.Id);
                 collection.ReplaceOne(filter, user, new ReplaceOptions { IsUpsert = true });
             }
         }
