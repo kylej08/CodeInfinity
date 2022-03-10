@@ -88,6 +88,8 @@ namespace Test2
                 numberOfRecordsTextBox.Clear();
                 generateCSVProgressLabel.Visible = false;
             }));
+
+            TotalUsersGenerated = 0;
         }
 
 
