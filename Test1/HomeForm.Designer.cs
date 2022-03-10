@@ -49,7 +49,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(136, 88);
+            this.label1.Location = new System.Drawing.Point(102, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 16);
             this.label1.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             // idNumberTextBox
             // 
-            this.idNumberTextBox.Location = new System.Drawing.Point(181, 88);
+            this.idNumberTextBox.Location = new System.Drawing.Point(186, 64);
             this.idNumberTextBox.MaxLength = 13;
             this.idNumberTextBox.Name = "idNumberTextBox";
             this.idNumberTextBox.Size = new System.Drawing.Size(137, 23);
@@ -69,7 +69,7 @@
             // 
             this.dateOfBirthDateTimePicker.CustomFormat = "dd/MM/yyyy";
             this.dateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(220, 198);
+            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(186, 174);
             this.dateOfBirthDateTimePicker.MaxDate = new System.DateTime(2006, 4, 1, 0, 0, 0, 0);
             this.dateOfBirthDateTimePicker.MinDate = new System.DateTime(1902, 1, 1, 0, 0, 0, 0);
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
@@ -83,7 +83,7 @@
             this.postButton.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.postButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.postButton.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.postButton.Location = new System.Drawing.Point(238, 265);
+            this.postButton.Location = new System.Drawing.Point(246, 270);
             this.postButton.Name = "postButton";
             this.postButton.Size = new System.Drawing.Size(75, 23);
             this.postButton.TabIndex = 3;
@@ -93,7 +93,7 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(181, 133);
+            this.nameTextBox.Location = new System.Drawing.Point(186, 118);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(137, 23);
             this.nameTextBox.TabIndex = 5;
@@ -104,7 +104,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(132, 136);
+            this.label2.Location = new System.Drawing.Point(98, 122);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 16);
             this.label2.TabIndex = 4;
@@ -112,7 +112,7 @@
             // 
             // surnameTextBox
             // 
-            this.surnameTextBox.Location = new System.Drawing.Point(426, 133);
+            this.surnameTextBox.Location = new System.Drawing.Point(431, 118);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(133, 23);
             this.surnameTextBox.TabIndex = 7;
@@ -123,7 +123,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(358, 136);
+            this.label3.Location = new System.Drawing.Point(363, 122);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 16);
             this.label3.TabIndex = 6;
@@ -133,7 +133,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(132, 204);
+            this.label4.Location = new System.Drawing.Point(98, 180);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 16);
             this.label4.TabIndex = 8;
@@ -144,7 +144,7 @@
             this.cancelButton.BackColor = System.Drawing.Color.Gold;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancelButton.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cancelButton.Location = new System.Drawing.Point(379, 265);
+            this.cancelButton.Location = new System.Drawing.Point(372, 270);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 9;
@@ -155,10 +155,11 @@
             // idNumberErrorLabel
             // 
             this.idNumberErrorLabel.AutoSize = true;
+            this.idNumberErrorLabel.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.idNumberErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.idNumberErrorLabel.Location = new System.Drawing.Point(181, 114);
+            this.idNumberErrorLabel.Location = new System.Drawing.Point(186, 90);
             this.idNumberErrorLabel.Name = "idNumberErrorLabel";
-            this.idNumberErrorLabel.Size = new System.Drawing.Size(115, 15);
+            this.idNumberErrorLabel.Size = new System.Drawing.Size(132, 16);
             this.idNumberErrorLabel.TabIndex = 10;
             this.idNumberErrorLabel.Text = "<error-placeholder>";
             this.idNumberErrorLabel.Visible = false;
@@ -166,10 +167,11 @@
             // nameErrorLabel
             // 
             this.nameErrorLabel.AutoSize = true;
+            this.nameErrorLabel.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.nameErrorLabel.Location = new System.Drawing.Point(181, 159);
+            this.nameErrorLabel.Location = new System.Drawing.Point(186, 144);
             this.nameErrorLabel.Name = "nameErrorLabel";
-            this.nameErrorLabel.Size = new System.Drawing.Size(115, 15);
+            this.nameErrorLabel.Size = new System.Drawing.Size(132, 16);
             this.nameErrorLabel.TabIndex = 11;
             this.nameErrorLabel.Text = "<error-placeholder>";
             this.nameErrorLabel.Visible = false;
@@ -177,10 +179,11 @@
             // surnameErrorLabel
             // 
             this.surnameErrorLabel.AutoSize = true;
+            this.surnameErrorLabel.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.surnameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.surnameErrorLabel.Location = new System.Drawing.Point(426, 159);
+            this.surnameErrorLabel.Location = new System.Drawing.Point(431, 144);
             this.surnameErrorLabel.Name = "surnameErrorLabel";
-            this.surnameErrorLabel.Size = new System.Drawing.Size(115, 15);
+            this.surnameErrorLabel.Size = new System.Drawing.Size(132, 16);
             this.surnameErrorLabel.TabIndex = 12;
             this.surnameErrorLabel.Text = "<error-placeholder>";
             this.surnameErrorLabel.Visible = false;
@@ -188,10 +191,11 @@
             // dateOfBirthErrorLabel
             // 
             this.dateOfBirthErrorLabel.AutoSize = true;
+            this.dateOfBirthErrorLabel.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateOfBirthErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.dateOfBirthErrorLabel.Location = new System.Drawing.Point(220, 224);
+            this.dateOfBirthErrorLabel.Location = new System.Drawing.Point(196, 200);
             this.dateOfBirthErrorLabel.Name = "dateOfBirthErrorLabel";
-            this.dateOfBirthErrorLabel.Size = new System.Drawing.Size(115, 15);
+            this.dateOfBirthErrorLabel.Size = new System.Drawing.Size(132, 16);
             this.dateOfBirthErrorLabel.TabIndex = 13;
             this.dateOfBirthErrorLabel.Text = "<error-placeholder>";
             this.dateOfBirthErrorLabel.Visible = false;
@@ -199,9 +203,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Red;
+            this.label5.BackColor = System.Drawing.Color.Salmon;
             this.label5.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(133, 369);
+            this.label5.Location = new System.Drawing.Point(133, 332);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(426, 16);
             this.label5.TabIndex = 14;
@@ -212,7 +216,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(682, 394);
+            this.ClientSize = new System.Drawing.Size(669, 370);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateOfBirthErrorLabel);
             this.Controls.Add(this.surnameErrorLabel);
