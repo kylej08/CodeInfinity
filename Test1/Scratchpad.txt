@@ -1,4 +1,0 @@
-﻿To-do list:
-	- Find a way to refactor dealing with the various error label messages.
-	- The ID helper should have a way to determine if the DOB section of an id is a valid date (first 6 numbers of the ID)
-		- As a result, an appropriate error message should be displayed to the user if the date is invalid

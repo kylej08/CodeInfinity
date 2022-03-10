@@ -1,7 +1,17 @@
 ﻿SA ID Number Format: https://www.westerncape.gov.za/general-publication/decoding-your-south-african-id-number-0
 Oldest person alive: https://en.as.com/en/2022/01/18/latest_news/1642544657_524428.html
 
-Mongodb:
+Learning about Mongodb:
 	- https://www.youtube.com/watch?v=69WBy4MHYUw
 	- https://mongodb.github.io/mongo-csharp-driver/2.14/getting_started/installation/
 	- https://mongodb.github.io/mongo-csharp-driver/2.14/getting_started/quick_tour/
+
+Learning about docker:
+	- https://www.youtube.com/watch?v=UrQWii_kfIE
+	- https://docs.microsoft.com/en-us/learn/modules/run-docker-with-azure-container-instances/2-run-aci
+	- https://www.appliedi.net/blog/what-are-azure-container-instances-and-how-do-i-use-them/
+	- https://docs.microsoft.com/en-us/azure/container-instances/container-instances-application-gateway
+	- https://docs.microsoft.com/en-us/azure/container-instances/container-instances-egress-ip-address
+	- https://docs.docker.com/cloud/aci-integration/
+	- https://www.youtube.com/watch?v=7G_oDLON7Us
+	- https://docs.microsoft.com/en-gb/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
