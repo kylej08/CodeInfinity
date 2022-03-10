@@ -19,6 +19,7 @@ namespace Test2
         private DataService _dataService;
 
         private int TotalUsersGenerated { get; set; }
+        private int TotalUsersForImport { get; set; }
 
         public HomeForm()
         {
@@ -30,7 +31,9 @@ namespace Test2
             _dataService = new DataService();
 
             TotalUsersGenerated = 0;
-            //_csvHelper.UserGenerated += OnUserGenerated;
+            TotalUsersForImport = 0;
+            _csvHelper.UserGenerated += OnUserGenerated;
+            _csvHelper.UserCreatedForImport += OnUserCreatedForImport;
         }
 
         private void generateCSVFileButton_Click(object sender, EventArgs e)
@@ -81,6 +84,7 @@ namespace Test2
                 numberOfRecordsTextBox.Enabled = true;
                 importCSVFileButton.Enabled = true;
                 numberOfRecordsTextBox.Clear();
+                generateCSVProgressLabel.Visible = false;
             }));
         }
 
@@ -108,6 +112,15 @@ namespace Test2
             }));
         }
 
+        private void OnUserCreatedForImport(object sender, EventArgs e)
+        {
+            TotalUsersForImport += 1;
+            this.Invoke(new Action(() =>
+            {
+                importCSVProgressLabel.Text = $"Transforming CSV List... ({TotalUsersForImport} of {_csvHelper.TotalUsersForImport})";
+            }));
+        }
+
         private void importCSVFileButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -125,17 +138,45 @@ namespace Test2
                 return;
             }
 
+            generateCSVFileButton.Enabled = false;
+            numberOfRecordsTextBox.Enabled = false;
+            importCSVFileButton.Enabled = false;
+            generateCSVProgressLabel.Visible = false;
+            importCSVProgressLabel.Visible = true;
+
+            Task.Run(() => ImportCSVFile(openFileDialog.FileName));
+
+  
+        }
+
+        private void ImportCSVFile(string filePath)
+        {
             try
             {
-                var userList = _csvHelper.CreateUserListFromCSV(openFileDialog.FileName);
+                var userList = _csvHelper.CreateUserListFromCSV(filePath);
+                this.Invoke(new Action(() => importCSVProgressLabel.Text = "Saving users to database..."));
                 _dataService.SaveUsers(userList);
-                MessageBox.Show($"The file {openFileDialog.FileName} has been successfully imported into the database.", "Import Successful",
+
+                MessageBox.Show($"The file {filePath} has been successfully imported into the database.", "Import Successful",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                TotalUsersForImport = 0;
+            }
+
+            this.Invoke(new Action(() =>
+            {
+                numberOfRecordsTextBox.Enabled = true;
+                importCSVFileButton.Enabled = true;
+                numberOfRecordsTextBox.Clear();
+                generateCSVProgressLabel.Visible = false;
+                importCSVProgressLabel.Visible = false;
+            }));
         }
     }
 }

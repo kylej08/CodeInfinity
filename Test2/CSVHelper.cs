@@ -15,14 +15,17 @@ namespace Test2
         private readonly RandomUserGenerator _randomUserGenerator;
 
         public event EventHandler UserGenerated;
+        public event EventHandler UserCreatedForImport;
 
         public string FilePath { get; set; }
+
+        public int TotalUsersForImport { get; set; }
 
         public CSVHelper()
         {
             _randomUserGenerator = new RandomUserGenerator();
 
-            //_randomUserGenerator.UserGenerated += OnUserGeneratedEvent;
+            _randomUserGenerator.UserGenerated += OnUserGeneratedEvent;
         }
 
         public void CreateCSVAsync(int variations)
@@ -51,14 +54,17 @@ namespace Test2
 
             var lines = File.ReadAllLines(filePath);
 
+            TotalUsersForImport = lines.Length - 1;
             // start from index 1 to ignore header
             for (int i = 1; i< lines.Length; i++)
             {
                 var line = lines[i].Replace("\"", "").Split(",");
 
                 userList.Add(CreateUserFromCSVRecord(line));
-            }
 
+                UserCreatedForImport.Invoke(this, new EventArgs());
+            }
+            TotalUsersForImport = 0;
             return userList;
         }
 
@@ -83,7 +89,6 @@ namespace Test2
         {
             UserGenerated.Invoke(sender, e); 
         }
-
     }
 
 

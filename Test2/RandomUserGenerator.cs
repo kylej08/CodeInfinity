@@ -42,13 +42,13 @@ namespace Test2
                         && x.DateOfBirth.Date == user.DateOfBirth.Date
                         && x.Age == user.Age) != null;
 
-                    if (! userExists)
+                    if (!userExists)
                     {
                         users.AddLast(user);
                         break;
                     }
                 }
-                //UserGenerated.Invoke(this, new EventArgs());
+                UserGenerated.Invoke(this, new EventArgs());
             }
 
             return users;

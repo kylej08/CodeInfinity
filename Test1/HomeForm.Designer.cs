@@ -42,6 +42,7 @@
             this.nameErrorLabel = new System.Windows.Forms.Label();
             this.surnameErrorLabel = new System.Windows.Forms.Label();
             this.dateOfBirthErrorLabel = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -185,11 +186,22 @@
             this.dateOfBirthErrorLabel.Text = "<error-placeholder>";
             this.dateOfBirthErrorLabel.Visible = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(153, 370);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(398, 15);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Since this data is stored in a cloud database, please only use ficticious data";
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(682, 394);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dateOfBirthErrorLabel);
             this.Controls.Add(this.surnameErrorLabel);
             this.Controls.Add(this.nameErrorLabel);
@@ -204,7 +216,9 @@
             this.Controls.Add(this.dateOfBirthDateTimePicker);
             this.Controls.Add(this.idNumberTextBox);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "HomeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HomeForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -227,5 +241,6 @@
         private System.Windows.Forms.Label nameErrorLabel;
         private System.Windows.Forms.Label surnameErrorLabel;
         private System.Windows.Forms.Label dateOfBirthErrorLabel;
+        private System.Windows.Forms.Label label5;
     }
 }

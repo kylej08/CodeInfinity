@@ -8,7 +8,8 @@ namespace Test1
     {
         private IMongoDatabase _db;
 
-        private readonly string _connectionString = "mongodb://localhost:27017";
+        //private readonly string _connectionString = "mongodb://localhost:27017";
+        private readonly string _connectionString = "mongodb://20.87.64.118:27017";
         private readonly string _dbName = "CodeInfinity";
 
         public UserRepository()

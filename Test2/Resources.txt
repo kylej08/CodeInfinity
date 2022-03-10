@@ -11,3 +11,5 @@
 
 
 5. Control.Invoke(): https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.control.invoke?view=windowsdesktop-6.0#system-windows-forms-control-invoke(system-action)
+
+6. Events: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/events/how-to-publish-events-that-conform-to-net-framework-guidelines

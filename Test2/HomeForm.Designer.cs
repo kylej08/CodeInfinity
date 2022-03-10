@@ -33,6 +33,7 @@
             this.numberOfRecordsTextBox = new System.Windows.Forms.TextBox();
             this.numberOfRecordsLabel = new System.Windows.Forms.Label();
             this.generateCSVProgressLabel = new System.Windows.Forms.Label();
+            this.importCSVProgressLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // generateCSVFileButton
@@ -80,16 +81,27 @@
             this.generateCSVProgressLabel.AutoSize = true;
             this.generateCSVProgressLabel.Location = new System.Drawing.Point(139, 132);
             this.generateCSVProgressLabel.Name = "generateCSVProgressLabel";
-            this.generateCSVProgressLabel.Size = new System.Drawing.Size(165, 15);
+            this.generateCSVProgressLabel.Size = new System.Drawing.Size(197, 15);
             this.generateCSVProgressLabel.TabIndex = 4;
-            this.generateCSVProgressLabel.Text = "<Generating-Users-Message>";
+            this.generateCSVProgressLabel.Text = "<CSV-Generate-Progress-Message>";
             this.generateCSVProgressLabel.Visible = false;
+            // 
+            // importCSVProgressLabel
+            // 
+            this.importCSVProgressLabel.AutoSize = true;
+            this.importCSVProgressLabel.Location = new System.Drawing.Point(139, 193);
+            this.importCSVProgressLabel.Name = "importCSVProgressLabel";
+            this.importCSVProgressLabel.Size = new System.Drawing.Size(186, 15);
+            this.importCSVProgressLabel.TabIndex = 5;
+            this.importCSVProgressLabel.Text = "<CSV-Import-Progress-Message>";
+            this.importCSVProgressLabel.Visible = false;
             // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 325);
+            this.Controls.Add(this.importCSVProgressLabel);
             this.Controls.Add(this.generateCSVProgressLabel);
             this.Controls.Add(this.numberOfRecordsLabel);
             this.Controls.Add(this.numberOfRecordsTextBox);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.TextBox numberOfRecordsTextBox;
         private System.Windows.Forms.Label numberOfRecordsLabel;
         private System.Windows.Forms.Label generateCSVProgressLabel;
+        private System.Windows.Forms.Label importCSVProgressLabel;
     }
 }
